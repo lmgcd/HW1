@@ -1,23 +1,15 @@
 public class Assignment01Q03 {
     public static void main(String[] args) {
-        int x = 10; // TODO: Read the first string argument (replace this line)
-        System.out.println("The first " + x + " Fibonacci numbers are:");
-
-        ////////////////////////////////////////////////////////////////
-        // TODO: Replace this code with the correct Fibonacci sequence
-        ////////////////////////////////////////////////////////////////
-        /// ...
-        
-        int numOdd = 0;
-        for (int i = 0; i < x; i++) {
-            System.out.print(i);
-            if (i < x - 1) 
-                System.out.print(" "); // Make sure we don't print a trailing space
+        int x = Integer.parseInt(args[0]);
+        int oddCounter = 2;
+        double fibonacciCurr = 1, fibonacciPrev = 1;
+        System.out.printf("The first %d Fibonacci numbers are:%n%.0f %.0f", x, fibonacciCurr, fibonacciPrev);
+        for (int i = 2; i < x; i++) {
+            fibonacciCurr += fibonacciPrev;
+            fibonacciPrev = fibonacciCurr - fibonacciPrev;
+            oddCounter += fibonacciCurr % 2;
+            System.out.printf(" %.0f", fibonacciCurr);
         }
-        System.out.println();
-        
-        ////////////////////////////////////////////////////////////////
-        
-        System.out.println("The number of odd numbers is: " + numOdd);
+        System.out.printf("%nThe number of odd numbers is: %d%n", oddCounter);
     }
 }
